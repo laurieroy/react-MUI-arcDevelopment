@@ -1,6 +1,7 @@
 # Arc Development Sample Site
 This is a code along to learn Material UI.
 
+The designer presented a XD mockup, going for clean, minimal and efficient dispaly of information.
 
 # Getting Started with Create React App
 
