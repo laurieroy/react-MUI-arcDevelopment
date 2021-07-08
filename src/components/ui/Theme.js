@@ -17,8 +17,17 @@ export default createTheme({
 		}
 	},
 	typography: {
-		h3: {
-			fontWeight: 300
-		} 
+		estimate: {
+			color: "white",
+			fontFamily: "Pacifico",
+			fontSize: "1rem",
+			textTransform: "none"
+		},
+		tab: {
+			fontFamily: "Raleway",
+			fontSize: "1rem",
+			fontWeight: 700,
+			textTransform: "none"
+		}
 	}
 });
