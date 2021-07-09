@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 // import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -40,6 +41,13 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     height: "7em",
   },
+  logoContainer: {
+    padding: 0,
+		height: "7em",
+		"&:hover": {
+			backgroundColor: "transparent"
+		}
+  },
   tab: {
     ...theme.typography.tab,
     marginLeft: "25px",
@@ -61,28 +69,80 @@ export default function Header(props) {
   const handleChange = (e, value) => {
     setValue(value);
   };
+  // NOTE: this is refactored later in the course, so I'm adding what he has to make it simpler to follow along
+  useEffect(() => {
+    if (window.location.pathname === "/" && value !== 0) {
+      setValue(0);
+    } else if (window.location.pathname === "/services" && value !== 0) {
+      setValue(1);
+    } else if (window.location.pathname === "/revolution" && value !== 0) {
+      setValue(2);
+    } else if (window.location.pathname === "/about" && value !== 0) {
+      setValue(3);
+    } else if (window.location.pathname === "/contact" && value !== 0) {
+      setValue(4);
+    } else if (window.location.pathname === "/estimate" && value !== 0) {
+      setValue(5);
+    }
+  }, [value]);
+
   return (
     <>
       <ElevationScroll>
         <AppBar>
           <Toolbar disableGutters>
-            <img src={logo} alt="company logo" className={classes.logo} />
+            <Button
+              component={Link}
+              to="/"
+              className={classes.logoContainer}
+							onClick={() => setValue(0)}
+							disableRipple
+            >
+              <img src={logo} alt="company logo" className={classes.logo} />
+            </Button>
             <Tabs
               value={value}
-							className={classes.tabContainer}
-							indicatorColor="primary"
+              className={classes.tabContainer}
+              indicatorColor="primary"
               onChange={handleChange}
             >
-              <Tab className={classes.tab} label="Home" />
-              <Tab className={classes.tab} label="Services" />
-              <Tab className={classes.tab} label="The Revolution" />
-              <Tab className={classes.tab} label="About Us" />
-              <Tab className={classes.tab} label="Contact Us" />
+              <Tab
+                className={classes.tab}
+                label="Home"
+                component={Link}
+                to="/"
+              />
+              <Tab
+                className={classes.tab}
+                label="Services"
+                component={Link}
+                to="/services"
+              />
+              <Tab
+                className={classes.tab}
+                label="The Revolution"
+                component={Link}
+                to="/revolution"
+              />
+              <Tab
+                className={classes.tab}
+                label="About Us"
+                component={Link}
+                to="/about"
+              />
+              <Tab
+                className={classes.tab}
+                label="Contact Us"
+                component={Link}
+                to="/contact"
+              />
             </Tabs>
             <Button
               variant="contained"
               color="secondary"
               className={classes.button}
+              component={Link}
+              to="/estimate"
             >
               Free Estimate
             </Button>
