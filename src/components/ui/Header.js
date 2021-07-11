@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
 
 import {
   AppBar,
   Button,
+  Menu,
+  MenuItem,
   Tab,
   Tabs,
   Toolbar,
+  makeStyles,
   useScrollTrigger,
 } from "@material-ui/core";
 // import CssBaseline from "@material-ui/core/CssBaseline";
@@ -43,10 +45,22 @@ const useStyles = makeStyles((theme) => ({
   },
   logoContainer: {
     padding: 0,
-		height: "7em",
-		"&:hover": {
-			backgroundColor: "transparent"
-		}
+    height: "7em",
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+  menu: {
+    backgroundColor: theme.palette.common.blue,
+    color: "white",
+    borderRadius: 0
+  },
+  menuItem: {
+    ...theme.typography.tab,
+    opacity: 0.7,
+    "&:hover": {
+      opacity: 1,
+    },
   },
   tab: {
     ...theme.typography.tab,
@@ -65,10 +79,24 @@ const useStyles = makeStyles((theme) => ({
 export default function Header(props) {
   const classes = useStyles();
   const [value, setValue] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
+
 
   const handleChange = (e, value) => {
     setValue(value);
   };
+
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
+    setOpen(true);
+  };
+
+  const handleClose = (e) => {
+    setAnchorEl(null);
+    setOpen(false);
+  };
+
   // NOTE: this is refactored later in the course, so I'm adding what he has to make it simpler to follow along
   useEffect(() => {
     if (window.location.pathname === "/" && value !== 0) {
@@ -95,8 +123,8 @@ export default function Header(props) {
               component={Link}
               to="/"
               className={classes.logoContainer}
-							onClick={() => setValue(0)}
-							disableRipple
+              onClick={() => setValue(0)}
+              disableRipple
             >
               <img src={logo} alt="company logo" className={classes.logo} />
             </Button>
@@ -113,9 +141,12 @@ export default function Header(props) {
                 to="/"
               />
               <Tab
+                aria-owns={anchorEl ? "simple-menu" : undefined}
+                aria-haspopup={anchorEl ? "true" : undefined}
                 className={classes.tab}
                 label="Services"
                 component={Link}
+                onMouseOver={(event) => handleClick(event)}
                 to="/services"
               />
               <Tab
@@ -146,6 +177,60 @@ export default function Header(props) {
             >
               Free Estimate
             </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{ onMouseLeave: handleClose }}
+              classes={{ paper: classes.menu }}
+              elevation={0}
+            >
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  setValue(1);
+                }}
+                component={Link}
+                to="/services"
+                classess={{ root: classes.menuItem }}
+              >
+                Services
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  setValue(1);
+                }}
+                component={Link}
+                to="/customSoftware"
+                classess={{ root: classes.menuItem }}
+              >
+                Custom Software Development
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  setValue(1);
+                }}
+                component={Link}
+                to="/mobileapps"
+                classess={{ root: classes.menuItem }}
+              >
+                Mobile App Development
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  setValue(1);
+                }}
+                component={Link}
+                to="/websites"
+                classess={{ root: classes.menuItem }}
+              >
+                Website Development
+              </MenuItem>
+            </Menu>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
