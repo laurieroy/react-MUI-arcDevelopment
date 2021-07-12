@@ -1,7 +1,15 @@
-# Arc Development Sample Site
-This is a code along to learn Material UI.
+# Arc Development Sample Site - WIP
+This is a [code along](https://www.udemy.com/course/implement-high-fidelity-designs-with-material-ui-and-reactjs) by [Zachary Reece](https://twitter.com/zacharydreece?lang=en) to learn [Material UI](https://material-ui.com).
 
 The designer presented a XD mockup, going for clean, minimal and efficient dispaly of information.
+
+The Material UI library is covered in depth, as we build a sample agency website for mobile and desktop. 
+
+### Features:
+* Customized theme
+* Responsive design
+* Image Optimization
+
 
 # Getting Started with Create React App
 
