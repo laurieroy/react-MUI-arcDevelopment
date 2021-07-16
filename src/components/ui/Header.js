@@ -130,12 +130,11 @@ export default function Header(props) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const { value, setValue, selectedIndex, setSelectedIndex } = props;
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [value, setValue] = useState(0);
 
   const handleChange = (e, newValue) => {
     setValue(newValue);
@@ -154,7 +153,7 @@ export default function Header(props) {
   const handleMenuItemClick = (e, i) => {
     setAnchorEl(null);
     setOpenMenu(false);
-    setSelectedIndex(i);
+    props.setSelectedIndex(i);
   };
 
   const menuOptions = [
@@ -176,7 +175,7 @@ export default function Header(props) {
       link: "/websites",
       activeIndex: 1,
       selectedIndex: 3,
-    }
+    },
   ];
 
   const routes = [
@@ -195,12 +194,17 @@ export default function Header(props) {
   ];
 
   useEffect(() => {
+    const { value, setValue, selectedIndex, setSelectedIndex } = props;
+
     [...menuOptions, ...routes].forEach((route) => {
       switch (window.location.pathname) {
         case `${route.link}`:
           if (value !== route.activeIndex) {
             setValue(route.activeIndex);
-            if (route.selectedIndex && route.selectedIndex !== selectedIndex) {
+            if (
+              route.selectedIndex &&
+              route.selectedIndex !== selectedIndex
+            ) {
               setSelectedIndex(route.selectedIndex);
             }
           }
@@ -209,7 +213,7 @@ export default function Header(props) {
           break;
       }
     });
-  }, [value, menuOptions, selectedIndex, routes]);
+  }, [value, setValue, menuOptions, selectedIndex, setSelectedIndex, routes]);
 
   const tabs = (
     <>
@@ -258,9 +262,9 @@ export default function Header(props) {
             component={Link}
             key={`${option}${i}`}
             onClick={(event) => {
+              handleClose();
               handleMenuItemClick(event, i);
               setValue(i);
-              handleClose();
             }}
             selected={i === selectedIndex && value === 1}
             to={option.link}
@@ -294,9 +298,9 @@ export default function Header(props) {
               key={`${route}${route.activeIndex}`}
               onClick={() => {
                 setOpenDrawer(false);
-                setValue(route.activeIndex);
+                props.setValue(route.activeIndex);
               }}
-              selected={value === route.activeIndex}
+              selected={props.value === route.activeIndex}
               to={route.link}
             >
               <ListItemText className={classes.drawerItem} disableTypography>
@@ -306,19 +310,19 @@ export default function Header(props) {
           ))}
 
           <ListItem
-            button            
+            button
             classes={{
               root: classes.drawerItemEstimate,
-              selected: classes.drawerItemSelected
+              selected: classes.drawerItemSelected,
             }}
             component={Link}
             disableTypography
             divider
             onClick={() => {
               setOpenDrawer(false);
-              setValue(5);
+              props.setValue(5);
             }}
-            selected={value === 5}
+            selected={props.value === 5}
             to="/estimate"
           >
             <ListItemText className={classes.drawerItem} disableTypography>
@@ -346,7 +350,7 @@ export default function Header(props) {
               component={Link}
               to="/"
               className={classes.logoContainer}
-              onClick={() => setValue(0)}
+              onClick={() => props.setValue(0)}
               disableRipple
             >
               <img src={logo} alt="company logo" className={classes.logo} />
