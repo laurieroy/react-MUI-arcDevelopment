@@ -28,6 +28,19 @@ export default createTheme({
 			fontSize: "1rem",
 			fontWeight: 700,
 			textTransform: "none"
-		}
+		},
+		h2: {
+			color: `${arcBlue}`,
+			fontFamily: "Raleway",
+			fontWeight: 700,
+			fontSize: "2.5rem",
+			lineHeight: 1.5
+		},
+		h3: {
+			fontFamily: "Pacifico",
+			fontSize: "2.5rem",
+			color: arcBlue
+		},
+
 	}
 });
