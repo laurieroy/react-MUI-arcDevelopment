@@ -108,14 +108,14 @@ export default function Footer(props) {
               <Grid
                 className={classes.link}
                 component={Link}
-                to="/mobileapps"
+                to="/apps"
                 item
                 onClick={() => {
                   props.setValue(1);
                   props.setSelectedIndex(2);
                 }}
               >
-                Mobile Development
+                iOS/Android App Development
               </Grid>
               <Grid
                 className={classes.link}

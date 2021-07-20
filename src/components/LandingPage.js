@@ -8,6 +8,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import ButtonArrow from "../components/ui/ButtonArrow";
 import animationData from "../animations/landinganimation/data";
 import customSoftwareIcon from "../assets/Custom Software Icon.svg";
+import mobileAppsIcon from "../assets/mobileIcon.svg";
 
 const useStyles = makeStyles(
   (theme = {
@@ -141,26 +142,64 @@ export default function LandingPage() {
         </Grid>
       </Grid>
       <Grid item>
-        {/*----- Services Block -----*/}
+        {" "}
+        {/*---  block ----*/}
+        <Grid container justify="flex-end" align-items="center">
+          <Grid item sm className={classes.heroTextContainer}>
+            <Typography align="center" variant="h2">
+              Bringing West Coast Technology
+              <br />
+              to the Midwest
+            </Typography>
+            <Grid
+              className={classes.buttonContainer}
+              container
+              justify="center"
+            >
+              <Grid item>
+                <Button className={classes.estimateButton} variant="contained">
+                  Free Estimate
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button className={classes.learnButtonHero} variant="outlined">
+                  <span style={{ marginRight: 10 }}>Learn More</span>
+                  <ButtonArrow
+                    width={15}
+                    height={15}
+                    fill={theme.palette.common.blue}
+                  />
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item sm className={classes.animation}>
+            <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
+            );
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        {/*----- iOS/Android App Development Block -----*/}
         <Grid
           container
           direction="row"
-          justify={matchesSM ? "center" : undefined}
+          justify={matchesSM ? "center" : "flex-end"}
           className={classes.serviceContainer}
         >
           <Grid
             item
             style={{
-              marginLeft: matchesSM ? 0 : "5em",
               textalign: matchesSM ? "center" : undefined,
             }}
           >
-            <Typography variant="h4">Custom Software Development</Typography>
+            <Typography variant="h4">iOS/Android App Development</Typography>
             <Typography variant="subtitle1" className={classes.subtitle}>
-              Save Energy. Save Time. Save Money.
+              Extend Functionality. Extend Access. Increase Engagement.
             </Typography>
             <Typography variant="subtitle1">
-              Complete digital solutions, from investigation to{" "}
+              Integrate your web experience or create a standalone app
+              {matchesSM ? null : <br />}with either mobile platform.
               <span className={classes.specialText}>celebration</span>.
             </Typography>
             <Button className={classes.learnButton} variant="outlined">
@@ -172,11 +211,11 @@ export default function LandingPage() {
               />
             </Button>
           </Grid>
-          <Grid Item>
+          <Grid Item style={{ marginRight: matchesSM ? 0 : "5em" }}>
             <img
               className={classes.icon}
-              alt="custom software icon"
-              src={customSoftwareIcon}
+              alt="mobile phone icon"
+              src={mobileAppsIcon}
             />
           </Grid>
         </Grid>
