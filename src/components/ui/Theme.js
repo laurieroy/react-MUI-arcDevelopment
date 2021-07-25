@@ -1,10 +1,10 @@
-import { createTheme } from "@material-ui/core/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
 
 const arcBlue = "#0B72B9";
 const arcGrey = "#868686";
 const arcOrange = "#FFBA60";
 
-export default createTheme({
+export default createMuiTheme({
   palette: {
     common: {
       blue: arcBlue,
@@ -42,17 +42,11 @@ export default createTheme({
       fontFamily: "Pacifico",
       fontSize: "2.5rem",
     },
-
     h4: {
       color: arcBlue,
       fontFamily: "Raleway",
       fontSize: "1.75rem",
       fontWeight: 700,
-    },
-    subtitle1: {
-      color: arcGrey,
-      fontWeight: 300,
-      fontSize: "1.25rem",
     },
     learnButton: {
       border: arcBlue,
@@ -62,6 +56,11 @@ export default createTheme({
       borderRadius: 50,
       fontFamily: "Roboto",
       fontWeight: "bold",
+    },
+    subtitle1: {
+      color: arcGrey,
+      fontWeight: 300,
+      fontSize: "1.25rem",
     },
   },
 });
