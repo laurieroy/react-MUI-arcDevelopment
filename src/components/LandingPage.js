@@ -73,6 +73,28 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "2em",
     },
   },
+  revolutionBackground: {
+    backgroundImage: `url(${revolutionBackground})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    height: "100%",
+    width: "100%",
+  },
+  revolutionCard: {
+    position: "absolute",
+    boxShadow: theme.shadows[10],
+    borderRadius: 15,
+    padding: "10em",
+    [theme.breakpoints.down("sm")]: {
+      paddingBottom: "8em",
+      paddingTop: "8em",
+      paddingLeft: 0,
+      paddingRight: 0,
+      borderRadius: 0, 
+      width: 100%
+    },
+  },
   serviceContainer: {
     marginTop: "12em",
     [theme.breakpoints.down("sm")]: {
@@ -150,7 +172,8 @@ export default function LandingPage() {
           className={classes.serviceContainer}
           justify={matchesSM ? "center" : undefined}
         >
-          <Grid item
+          <Grid
+            item
             style={{
               marginLeft: matchesSM ? 0 : "5em",
               textAlign: matchesSM ? "center" : undefined,
@@ -266,12 +289,18 @@ export default function LandingPage() {
         </Grid>
       </Grid>
       <Grid item>
-        <Grid container alignItems="center" justify="center">
-          <Card>
+        {/*----- revolution Block -----*/}
+        <Grid
+          container
+          style={{ height: "100em", marginTop: "12em" }}
+          alignItems="center"
+          justify="center"
+        >
+          <Card className={classes.revolutionCard}>
             <CardContent style={{ textAlign: "center" }}>
               <Grid container direction="column">
                 <Grid item>
-                  <Typography variant="h3">The Revolution</Typography>
+                  <Typography variant="h3" gutterBottom>The Revolution</Typography>
                   <Typography variant="subtitle1">
                     Visionary insights coupled with cutting-edge technology is a
                     recipe for revolution.
