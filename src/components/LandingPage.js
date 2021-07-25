@@ -3,12 +3,13 @@ import Lottie from "react-lottie";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Button, Grid, Typography } from "@material-ui/core";
-
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+
 import ButtonArrow from "../components/ui/ButtonArrow";
 import animationData from "../animations/landinganimation/data";
 import customSoftwareIcon from "../assets/Custom Software Icon.svg";
 import mobileAppsIcon from "../assets/mobileIcon.svg";
+import websitesIcon from "../assets/websiteIcon.svg";
 
 const useStyles = makeStyles(
   (theme = {
@@ -135,15 +136,17 @@ export default function LandingPage() {
               </Grid>
             </Grid>
           </Grid>
+
           <Grid item sm className={classes.animation}>
             <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
             );
           </Grid>
         </Grid>
       </Grid>
+
       <Grid item>
         {" "}
-        {/*---  block ----*/}
+        {/*--- Services block ----*/}
         <Grid container justify="flex-end" align-items="center">
           <Grid item sm className={classes.heroTextContainer}>
             <Typography align="center" variant="h2">
@@ -173,12 +176,9 @@ export default function LandingPage() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item sm className={classes.animation}>
-            <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
-            );
-          </Grid>
         </Grid>
       </Grid>
+
       <Grid item>
         {/*----- iOS/Android App Development Block -----*/}
         <Grid
@@ -216,6 +216,46 @@ export default function LandingPage() {
               className={classes.icon}
               alt="mobile phone icon"
               src={mobileAppsIcon}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        {" "}
+        {/*----- websites Block -----*/}
+        <Grid
+          container
+          direction="row"
+          justify={matchesSM ? "center" : "undefined"}
+          className={classes.serviceContainer}
+        >
+          <Grid
+            item
+            style={{
+              textalign: matchesSM ? "center" : undefined,
+            }}
+          >
+            <Typography variant="h4">Website Development</Typography>
+            <Typography variant="subtitle1" className={classes.subtitle}>
+              Reach More. Discover More. Sell More.
+            </Typography>
+            <Typography variant="subtitle1">
+              Optimized for Search Engines, build for speed.
+            </Typography>
+            <Button className={classes.learnButton} variant="outlined">
+              <span style={{ marginRight: 10 }}>Learn More</span>
+              <ButtonArrow
+                width={10}
+                height={10}
+                fill={theme.palette.common.blue}
+              />
+            </Button>
+          </Grid>
+          <Grid Item style={{ marginRight: matchesSM ? 0 : "5em" }}>
+            <img
+              className={classes.icon}
+              alt="website icon"
+              src={websitesIcon}
             />
           </Grid>
         </Grid>

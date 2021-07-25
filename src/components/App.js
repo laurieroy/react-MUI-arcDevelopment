@@ -24,7 +24,7 @@ function App() {
           <Route
             exact
             path="/"
-            component={LandingPage} />
+            component={LandingPage}
           />
           <Route exact path="/services" component={() => <div>Services</div>} />
           <Route
