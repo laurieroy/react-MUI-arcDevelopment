@@ -50,17 +50,22 @@ export default createMuiTheme({
     },
     learnButton: {
       border: arcBlue,
-      color: arcBlue,
-      boderWidth: 2,
-      textTransform: "none",
       borderRadius: 50,
+      boderWidth: 2,
+      color: arcBlue,
       fontFamily: "Roboto",
       fontWeight: "bold",
+      textTransform: "none",
     },
     subtitle1: {
       color: arcGrey,
-      fontWeight: 300,
       fontSize: "1.25rem",
+      fontWeight: 300,
+    },
+    subtitle2: {
+      color: "white",
+      fontSize: "1.25rem",
+      fontWeight: 300,
     },
   },
 });
