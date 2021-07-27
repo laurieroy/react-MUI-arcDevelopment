@@ -51,8 +51,8 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "50px",
     marginRight: "25px",
     "&:hover": {
-			backgroundColor: theme.palette.secondary.light
-		}
+      backgroundColor: theme.palette.secondary.light,
+    },
   },
   drawer: {
     backgroundColor: theme.palette.common.blue,
@@ -204,13 +204,13 @@ export default function Header(props) {
         case `${route.link}`:
           if (value !== route.activeIndex) {
             setValue(route.activeIndex);
-            if (
-              route.selectedIndex &&
-              route.selectedIndex !== selectedIndex
-            ) {
+            if (route.selectedIndex && route.selectedIndex !== selectedIndex) {
               setSelectedIndex(route.selectedIndex);
             }
           }
+          break;
+        case "/estimate":
+          props.setValue(5);
           break;
         default:
           break;
@@ -243,6 +243,7 @@ export default function Header(props) {
         className={classes.button}
         color="secondary"
         component={Link}
+        onClick={() => props.setValue(5)}
         to="/estimate"
         variant="contained"
       >
@@ -256,7 +257,7 @@ export default function Header(props) {
         keepMounted
         MenuListProps={{ onMouseLeave: handleClose }}
         onClose={handleClose}
-        open={setOpenMenu}
+        open={openMenu}
         style={{ zIndex: 1302 }}
       >
         {menuOptions.map((option, i) => (
