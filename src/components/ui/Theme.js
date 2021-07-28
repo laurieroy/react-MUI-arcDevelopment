@@ -5,6 +5,11 @@ const arcGrey = "#868686";
 const arcOrange = "#FFBA60";
 
 export default createMuiTheme({
+  body1: {
+    color: arcGrey,
+    fontSize: "1.25rem",
+    fontWeight: 300,
+  },
   palette: {
     common: {
       blue: arcBlue,
