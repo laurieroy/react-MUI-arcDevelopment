@@ -1,0 +1,207 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+import { Button, Grid, Typography } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+
+import ButtonArrow from "./ui/ButtonArrow";
+import customSoftwareIcon from "../assets/Custom Software Icon.svg";
+import mobileAppsIcon from "../assets/mobileIcon.svg";
+import websitesIcon from "../assets/websiteIcon.svg";
+
+const useStyles = makeStyles((theme) => ({
+  icon: {
+    marginLeft: "2em",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: 0,
+    },
+  },
+  learnButton: {
+    ...theme.typography.learnButton,
+    fontHeight: 35,
+    fontSize: "0.7rem",
+    padding: 5,
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "2em",
+    },
+  },
+  serviceContainer: {
+    marginTop: "10em",
+    [theme.breakpoints.down("sm")]: {
+      padding: 25,
+    },
+  },
+  specialText: {
+    fontFamily: "Pacifico",
+    color: theme.palette.common.orange,
+  },
+  subtitle: {
+    marginBottom: "1em",
+  },
+}));
+
+export default function Servies(props) {
+  const classes = useStyles();
+  const theme = useTheme();
+  // I'm following along w/his code, but i think i have to change all sm to xs
+  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+
+  return (
+    <Grid container direction="column">
+      <Grid item>
+        {" "}
+        {/*--- custom software block  ----*/}
+        <Grid
+          container
+          className={classes.serviceContainer}
+          justify={matchesSM ? "center" : undefined}
+        >
+          <Grid
+            item
+            style={{
+              textAlign: matchesSM ? "center" : undefined,
+            }}
+          >
+            <Typography variant="h4">Custom Software Development</Typography>
+            <Typography variant="subtitle1" className={classes.subtitle}>
+              Save Energy. Save Time. Save Money.
+            </Typography>
+            <Typography>
+              Complete digital solutions, from investigation to{" "}
+              <span className={classes.specialText}>celebration</span>.
+            </Typography>
+            <Button
+              component={Link}
+              to="/customSoftware"
+              className={classes.learnButton}
+              variant="outlined"
+              onclick={() => {
+                props.setValue(1);
+                props.setSelectedIndex(1);
+              }}
+            >
+              <span style={{ marginRight: 10 }}>Learn More</span>
+              <ButtonArrow
+                width={10}
+                height={10}
+                fill={theme.palette.common.blue}
+              />
+            </Button>
+
+            <Grid item>
+              {/*----- iOS/Android App Development Block -----*/}
+              <Grid
+                container
+                direction="row"
+                justify={matchesSM ? "center" : "flex-end"}
+                className={classes.serviceContainer}
+                style={{ marginTop: "5em" }}
+              >
+                <Grid
+                  item
+                  style={{
+                    textalign: matchesSM ? "center" : undefined,
+                  }}
+                >
+                  <Typography variant="h4">
+                    iOS/Android App Development
+                  </Typography>
+                  <Typography variant="subtitle1" className={classes.subtitle}>
+                    Extend Functionality. Extend Access. Increase Engagement.
+                  </Typography>
+                  <Typography variant="subtitle1">
+                    Integrate your web experience or create a standalone app
+                    {matchesSM ? null : <br />}with either mobile platform.
+                  </Typography>
+                  <Button
+                    component={Link}
+                    to="/mobileApps"
+                    className={classes.learnButton}
+                    variant="outlined"
+                    onclick={() => {
+                      props.setValue(1);
+                      props.setSelectedIndex(2);
+                    }}
+                  >
+                    <span style={{ marginRight: 10 }}>Learn More</span>
+                    <ButtonArrow
+                      width={10}
+                      height={10}
+                      fill={theme.palette.common.blue}
+                    />
+                  </Button>
+                </Grid>
+                <Grid Item style={{ marginRight: matchesSM ? 0 : "5em" }}>
+                  <img
+                    className={classes.icon}
+                    alt="mobile phone icon"
+                    src={mobileAppsIcon}
+                  />
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item>
+              <img
+                alt="custom software icon"
+                src={customSoftwareIcon}
+                className={classes.icon}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+
+      <Grid item>
+        {" "}
+        {/*----- websites Block -----*/}
+        <Grid
+          container
+          direction="row"
+          justify={matchesSM ? "center" : "flex-end"}
+          className={classes.serviceContainer}
+          style={{ marginBottom: "10em" }}
+        >
+          <Grid
+            item
+            style={{
+              textalign: matchesSM ? "center" : undefined,
+            }}
+          >
+            <Typography variant="h4">Website Development</Typography>
+            <Typography variant="subtitle1" className={classes.subtitle}>
+              Reach More. Discover More. Sell More.
+            </Typography>
+            <Typography variant="subtitle1">
+              Optimized for Search Engines, build for speed.
+            </Typography>
+            <Button
+              component={Link}
+              to="/websites"
+              className={classes.learnButton}
+              variant="outlined"
+              onclick={() => {
+                props.setValue(1);
+                props.setSelectedIndex(3);
+              }}
+            >
+              <span style={{ marginRight: 10 }}>Learn More</span>
+              <ButtonArrow
+                width={10}
+                height={10}
+                fill={theme.palette.common.blue}
+              />
+            </Button>
+          </Grid>
+          <Grid Item style={{ marginRight: matchesSM ? 0 : "5em" }}>
+            <img
+              className={classes.icon}
+              alt="website icon"
+              src={websitesIcon}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
+}
