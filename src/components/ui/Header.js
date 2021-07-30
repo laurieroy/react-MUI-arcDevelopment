@@ -138,9 +138,10 @@ export default function Header(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
+  //  removed selectedIndex, value, SetValue and set as props since need in footer
 
   const handleChange = (e, newValue) => {
-    setValue(newValue);
+    props.setValue(newValue);
   };
 
   const handleClick = (e) => {
@@ -197,6 +198,7 @@ export default function Header(props) {
   ];
 
   useEffect(() => {
+    // either way, use this fix or props
     const { value, setValue, selectedIndex, setSelectedIndex } = props;
 
     [...menuOptions, ...routes].forEach((route) => {
@@ -216,7 +218,15 @@ export default function Header(props) {
           break;
       }
     });
-  }, [value, setValue, menuOptions, selectedIndex, setSelectedIndex, routes]);
+  }, [
+    value,
+    setValue,
+    menuOptions,
+    selectedIndex,
+    setSelectedIndex,
+    routes,
+    props,
+  ]);
 
   const tabs = (
     <>

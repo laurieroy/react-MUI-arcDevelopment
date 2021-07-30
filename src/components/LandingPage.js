@@ -136,6 +136,7 @@ export default function LandingPage(props) {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  
   return (
     <Grid container direction="column" className={classes.mainContainer}>
       <Grid item>
@@ -159,7 +160,7 @@ export default function LandingPage(props) {
                   to="/estimate"
                   className={classes.estimateButton}
                   variant="contained"
-                  onclick={() => props.setValue(5)}
+                  onClick={() => props.setValue(5)}
                 >
                   Free Estimate
                 </Button>
@@ -170,7 +171,7 @@ export default function LandingPage(props) {
                   to="/revolution"
                   className={classes.learnButtonHero}
                   variant="outlined"
-                  onclick={() => props.setValue(2)}
+                  onClick={() => props.setValue(2)}
                 >
                   <span style={{ marginRight: 10 }}>Learn More</span>
                   <ButtonArrow
@@ -217,7 +218,7 @@ export default function LandingPage(props) {
               to="/customSoftware"
               className={classes.learnButton}
               variant="outlined"
-              onclick={() => {
+              onClick={() => {
                 props.setValue(1);
                 props.setSelectedIndex(1);
               }}
@@ -268,7 +269,7 @@ export default function LandingPage(props) {
               to="/mobileApps"
               className={classes.learnButton}
               variant="outlined"
-              onclick={() => {
+              onClick={() => {
                 props.setValue(1);
                 props.setSelectedIndex(2);
               }}
@@ -317,7 +318,7 @@ export default function LandingPage(props) {
               to="/websites"
               className={classes.learnButton}
               variant="outlined"
-              onclick={() => {
+              onClick={() => {
                 props.setValue(1);
                 props.setSelectedIndex(3);
               }}
@@ -363,7 +364,7 @@ export default function LandingPage(props) {
                     to="/revolution"
                     className={classes.learnButtonHero}
                     variant="outlined"
-                    onclick={() => props.setValue(2)}
+                    onClick={() => props.setValue(2)}
                   >
                     <span style={{ marginRight: 10 }}>Learn More</span>
                     <ButtonArrow
@@ -416,7 +417,7 @@ export default function LandingPage(props) {
                     to="/about"
                     variant="outlined"
                     style={{ color: "white", borderColor: "white" }}
-                    onclick={() => props.setValue(3)}
+                    onClick={() => props.setValue(3)}
                   >
                     <span style={{ marginRight: 10 }}>Learn More</span>
 
@@ -450,7 +451,7 @@ export default function LandingPage(props) {
                     to="/about"
                     variant="outlined"
                     style={{ color: "white", borderColor: "white" }}
-                    onclick={() => props.setValue(4)}
+                    onClick={() => props.setValue(4)}
                   >
                     <span style={{ marginRight: 10 }}>Learn More</span>
 

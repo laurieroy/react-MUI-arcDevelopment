@@ -88,7 +88,7 @@ export default function CallToAction(props) {
                 component={Link}
                 to="/revolution"
                 variant="outlined"
-                onclick={() => props.setValue(2)}
+                onClick={() => props.setValue(2)}
               >
                 <span style={{ marginRight: 5 }}>Learn More</span>
                 <ButtonArrow
@@ -107,7 +107,7 @@ export default function CallToAction(props) {
           className={classes.estimateButton}
           component={Link}
           to="/estimate"
-          onclick={() => props.setValue(5)}
+          onClick={() => props.setValue(5)}
         >
           Free Estimate
         </Button>

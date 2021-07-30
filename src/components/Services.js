@@ -91,7 +91,7 @@ export default function Servies(props) {
               to="/customSoftware"
               className={classes.learnButton}
               variant="outlined"
-              onclick={() => {
+              onClick={() => {
                 props.setValue(1);
                 props.setSelectedIndex(1);
               }}
@@ -135,7 +135,7 @@ export default function Servies(props) {
                     to="/mobileApps"
                     className={classes.learnButton}
                     variant="outlined"
-                    onclick={() => {
+                    onClick={() => {
                       props.setValue(1);
                       props.setSelectedIndex(2);
                     }}
@@ -198,7 +198,7 @@ export default function Servies(props) {
               to="/websites"
               className={classes.learnButton}
               variant="outlined"
-              onclick={() => {
+              onClick={() => {
                 props.setValue(1);
                 props.setSelectedIndex(3);
               }}

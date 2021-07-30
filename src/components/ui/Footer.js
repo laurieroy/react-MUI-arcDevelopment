@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -71,9 +71,7 @@ export default function Footer(props) {
                 to="/"
                 item
                 className={classes.link}
-                onClick={() => {
-                  props.setValue(0);
-                }}
+                onClick={() => props.setValue(0)}
               >
                 Home
               </Grid>
@@ -108,7 +106,7 @@ export default function Footer(props) {
               <Grid
                 className={classes.link}
                 component={Link}
-                to="/apps"
+                to="/movileApps"
                 item
                 onClick={() => {
                   props.setValue(1);
