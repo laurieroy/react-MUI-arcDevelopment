@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/styles";
 
-import theme from "./ui/Theme";
-import Header from "../components/ui/Header";
-import Footer from "../components/ui/Footer";
-import LandingPage from "./LandingPage";
-import Services from "./Services";
 import CustomSoftware from "./CustomSoftware";
+import Footer from "../components/ui/Footer";
+import Header from "../components/ui/Header";
+import LandingPage from "./LandingPage";
 import MobileApps from "./MobileApps";
+import Services from "./Services";
+import Websites from "./Websites";
+
+import theme from "./ui/Theme";
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -68,7 +70,17 @@ function App() {
               />
             )}
           />
-          <Route exact path="/websites" component={() => <div>Websites</div>} />
+          <Route
+            exact
+            path="/websites"
+            render={(props) => (
+              <Websites
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
+          />
           <Route
             exact
             path="/revolution"
@@ -82,16 +94,10 @@ function App() {
           />
           <Route exact path="/estimate" component={() => <div>Estimate</div>} />
         </Switch>
-        <Footer
-          value={value}
-          setValue={setValue}
-          selectedIndex={selectedIndex}
-          setSelectedIndex={setSelectedIndex}
-        />
+        <Footer setValue={setValue} setSelectedIndex={setSelectedIndex} />
       </BrowserRouter>
     </ThemeProvider>
   );
 }
 
 export default App;
-// div className="App"
