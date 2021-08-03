@@ -7,6 +7,7 @@ import Footer from "../components/ui/Footer";
 import Header from "../components/ui/Header";
 import LandingPage from "./LandingPage";
 import MobileApps from "./MobileApps";
+import Revolution from "./Revolution";
 import Services from "./Services";
 import Websites from "./Websites";
 
@@ -84,7 +85,13 @@ function App() {
           <Route
             exact
             path="/revolution"
-            component={() => <div>The Revolution</div>}
+            render={(props) => (
+              <Revolution
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
           />
           <Route exact path="/about" component={() => <div>About</div>} />
           <Route
