@@ -427,7 +427,7 @@ export default function LandingPage(props) {
               </Grid>
             </Grid>
             <Grid
-              item
+              item 
               sm
               style={{
                 marginRight: matchesXS ? 0 : matchesSM ? "2em" : "5em",

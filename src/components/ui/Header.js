@@ -361,11 +361,11 @@ export default function Header(props) {
         <AppBar className={classes.appbar}>
           <Toolbar disableGutters>
             <Button
-              component={Link}
-              to="/"
               className={classes.logoContainer}
-              onClick={() => props.setValue(0)}
+              component={Link}
               disableRipple
+              onClick={() => props.setValue(0)}
+              to="/"
             >
               <img src={logo} alt="company logo" className={classes.logo} />
             </Button>
