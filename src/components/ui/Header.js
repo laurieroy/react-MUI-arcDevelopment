@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import {
@@ -133,11 +133,12 @@ export default function Header(props) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const { value, setValue, selectedIndex, setSelectedIndex } = props;
+  const { value, setValue, selectedIndex } = props;
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
+
   //  removed selectedIndex, value, SetValue and set as props since need in footer
 
   const handleChange = (e, newValue) => {
@@ -179,7 +180,7 @@ export default function Header(props) {
       link: "/websites",
       activeIndex: 1,
       selectedIndex: 3,
-    },
+    }
   ];
 
   const routes = [
@@ -190,43 +191,36 @@ export default function Header(props) {
       activeIndex: 1,
       ariaOwns: anchorEl ? "simple-menu" : undefined,
       ariaPopup: anchorEl ? "true" : undefined,
-      mouseOver: (event) => handleClick(event),
+      mouseOver: (event) => handleClick(event)
     },
     { name: "The Revolution", link: "/revolution", activeIndex: 2 },
     { name: "About Us", link: "/about", activeIndex: 3 },
     { name: "Contact Us", link: "/contact", activeIndex: 4 },
   ];
 
-  useEffect(() => {
-    // either way, use this fix or props
-    const { value, setValue, selectedIndex, setSelectedIndex } = props;
+  const activeIndex = () => {
+    //Checking to see if one of the routes has a link value that matches the current pathname
+    //If it finds one then that route is passed to the indexOf to get the index of that route
+    var found = routes.indexOf(
+      routes.filter(({ link }) => link === window.location.pathname)[0]
+    );
+    //Then we need to check if we're at one of the menu options by doing the same logic
+    //But since we want to set the services tab as active for any of the menu options we can just use .some
+    //and that will check if at least one of them has a link matching the current pathname
+    const menuFound = menuOptions.some(
+      ({ link }) => link === window.location.pathname
+    );
 
-    [...menuOptions, ...routes].forEach((route) => {
-      switch (window.location.pathname) {
-        case `${route.link}`:
-          if (value !== route.activeIndex) {
-            setValue(route.activeIndex);
-            if (route.selectedIndex && route.selectedIndex !== selectedIndex) {
-              setSelectedIndex(route.selectedIndex);
-            }
-          }
-          break;
-        case "/estimate":
-          props.setValue(5);
-          break;
-        default:
-          break;
-      }
-    });
-  }, [
-    value,
-    setValue,
-    menuOptions,
-    selectedIndex,
-    setSelectedIndex,
-    routes,
-    props,
-  ]);
+    //If that's the case and we are at one of the menu options, then we change the found index to 1 for the
+    //services tab
+    if (menuFound) {
+      found = 1;
+    }
+
+    //If no matching route was found then found will be -1 and we will return false to clear the active tab
+    //Otherwise we return the index
+    return found === -1 ? false : found;
+  }
 
   const tabs = (
     <>
@@ -234,7 +228,7 @@ export default function Header(props) {
         className={classes.tabContainer}
         indicatorColor="primary"
         onChange={handleChange}
-        value={value}
+        value={activeIndex()}
       >
         {routes.map((route, index) => (
           <Tab
