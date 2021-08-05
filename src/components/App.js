@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/styles";
 
+import About from "./About";
 import CustomSoftware from "./CustomSoftware";
 import Footer from "../components/ui/Footer";
 import Header from "../components/ui/Header";
@@ -93,7 +94,17 @@ function App() {
               />
             )}
           />
-          <Route exact path="/about" component={() => <div>About</div>} />
+          <Route
+            exact
+            path="/about"
+            render={(props) => (
+              <About
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
+          />
           <Route
             exact
             path="/contact"
