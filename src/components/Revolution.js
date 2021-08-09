@@ -69,7 +69,8 @@ export default function Revolution(props) {
       >
         <Typography
           variant="h2"
-          align={matchesMD ? "center" : undefined}
+          align={matchesMD ? "center" : undefined }
+          // not being implemented
           style={{ fontFamily: "Pacifico" }}
         >
           The Revolution
@@ -272,6 +273,7 @@ export default function Revolution(props) {
         justify="center"
       >
         <Grid item>
+        //  see why not taking justify center
           <Typography variant="h4" gutterBottom>
             Process
           </Typography>
@@ -629,7 +631,15 @@ export default function Revolution(props) {
             >
               Engineering begins after your approval on the final designs. We
               start by scaffolding out the project on a high level, prioritizing
-              some areas over others.', 'Each area is then developed in order of
+              some areas over others.
+            </Typography>
+            <Typography
+              align={matchesMD ? "center" : undefined}
+              variant="body1"
+              paragraph
+              style={{ color: "#fff", maxWidth: "20em" }}
+            >
+              Each area is then developed in order of
               importance until ready to be connected to the next piece.
             </Typography>
             <Typography
