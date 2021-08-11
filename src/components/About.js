@@ -1,12 +1,7 @@
 import React from "react";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import {
-  Avatar,
-  Grid,
-  Hidden,
-  Typography,
-} from "@material-ui/core";
+import { Avatar, Grid, Hidden, Typography } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import history from "../assets/history.svg";
@@ -14,7 +9,7 @@ import profile from "../assets/founder.jpg";
 import puppy from "../assets/puppy.svg";
 import yearbook from "../assets/yearbook.svg";
 
-import CallToAction from "./ui/CallToAction"
+import CallToAction from "./ui/CallToAction";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -200,14 +195,14 @@ export default function About(props) {
         <Hidden lgUp>
           <Grid item lg style={{ maxWidth: "45em", padding: "1.25em" }}>
             <Typography variant="body1" align="center" paragraph>
-               I taught myself basic coding from a library book in third grade,
+              I taught myself basic coding from a library book in third grade,
               and ever since then my passion has solely been set on learning —
               learning about computers, learning mathematics and philosophy,
               studying design, always just learning.
             </Typography>
             <Typography variant="body1" align="center" paragraph>
-            Now I’m ready to apply everything I’ve learned, and to help others
-            with the intuition I have developed.
+              Now I’m ready to apply everything I’ve learned, and to help others
+              with the intuition I have developed.
             </Typography>
           </Grid>
         </Hidden>
@@ -235,14 +230,14 @@ export default function About(props) {
         <Hidden mdDown>
           <Grid item lg style={{ maxWidth: "45em", padding: "1.25em" }}>
             <Typography variant="body1" align="center" paragraph>
-            I taught myself basic coding from a library book in third grade,
-            and ever since then my passion has solely been set on learning —
-            learning about computers, learning mathematics and philosophy,
-            studying design, always just learning.
+              I taught myself basic coding from a library book in third grade,
+              and ever since then my passion has solely been set on learning —
+              learning about computers, learning mathematics and philosophy,
+              studying design, always just learning.
             </Typography>
             <Typography variant="body1" align="center" paragraph>
-            Now I’m ready to apply everything I’ve learned, and to help others
-            with the intuition I have developed.
+              Now I’m ready to apply everything I’ve learned, and to help others
+              with the intuition I have developed.
             </Typography>
           </Grid>
         </Hidden>
@@ -266,10 +261,9 @@ export default function About(props) {
             </Typography>
           </Grid>
         </Grid>
-        </Grid>
       </Grid>
       <Grid item>
-        <CallToAction setValue={props.setValue}
+        <CallToAction setValue={props.setValue} />
       </Grid>
     </Grid>
   );

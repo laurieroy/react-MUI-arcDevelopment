@@ -448,7 +448,7 @@ export default function LandingPage(props) {
                   <Button
                     className={classes.learnButton}
                     component={Link}
-                    to="/about"
+                    to="/contact"
                     variant="outlined"
                     style={{ color: "white", borderColor: "white" }}
                     onClick={() => props.setValue(4)}

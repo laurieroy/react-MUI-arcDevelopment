@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/styles";
 
 import About from "./About";
+import Contact from "./Contact";
 import CustomSoftware from "./CustomSoftware";
 import Footer from "../components/ui/Footer";
 import Header from "../components/ui/Header";
@@ -108,7 +109,13 @@ function App() {
           <Route
             exact
             path="/contact"
-            component={() => <div>Contact Us</div>}
+            render={(props) => (
+              <Contact
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
           />
           <Route exact path="/estimate" component={() => <div>Estimate</div>} />
         </Switch>
