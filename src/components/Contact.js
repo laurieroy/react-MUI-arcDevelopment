@@ -6,8 +6,13 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
   Avatar,
   Button,
+  Dialog,
+  // DialogActions,
+  DialogContent,
+  // DialogContentText,
+  // DialogTitle,
   Grid,
-  Hidden,
+  // Hidden,
   TextField,
   Typography,
 } from "@material-ui/core";
@@ -40,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 50,
     fontSize: "1.5rem",
     height: 80,
+    width: 205,
     marginLeft: "2em",
     marginRight: "5em",
     "&:hover": {
@@ -49,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: 0,
       marginRight: 0,
     },
-    width: 205,
   },
   learnButton: {
     ...theme.typography.learnButton,
@@ -89,6 +94,7 @@ export default function Contact(props) {
   const [email, setEmail] = useState("");
   const [emailHelper, setEmailHelper] = useState("");
   const [message, setMessage] = useState("");
+  const [open, setOpen] = useState(false);
   const [phone, setPhone] = useState("");
   const [phoneHelper, setPhoneHelper] = useState("");
 
@@ -270,6 +276,7 @@ export default function Contact(props) {
                 }
                 variant="contained"
                 className={classes.sendButton}
+                onClick={() => setOpen(true)}
               >
                 Send Message
                 <img
@@ -283,6 +290,89 @@ export default function Contact(props) {
         </Grid>
       </Grid>
 
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <DialogContent>
+          <Grid item>
+            <Typography variant="h4" gutterBottom>
+              Confirm Message
+            </Typography>
+          </Grid>
+          <Grid item style={{ marginBottom: "0.5em" }}>
+            <TextField
+              label="Name"
+              id="name"
+              error
+              fullWidth
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+            />
+          </Grid>
+          <Grid item style={{ marginBottom: "0.5em" }}>
+            <TextField
+              label="Email"
+              error={emailHelper.length !== 0}
+              fullWidth
+              helperText={emailHelper}
+              id="email"
+              value={email}
+              onChange={onChange}
+            />
+          </Grid>
+          <Grid item style={{ marginBottom: "0.5em" }}>
+            <TextField
+              label="Phone"
+              error={phoneHelper.length !== 0}
+              fullWidth
+              helperText={phoneHelper}
+              id="phone"
+              value={phone}
+              onChange={onChange}
+            />
+          </Grid>
+
+          <Grid item style={{ maxWidth: "20em" }}>
+            <TextField
+              InputProps={{ disableUnderline: true }}
+              value={message}
+              className={classes.message}
+              fullWidth
+              id="message"
+              multiline
+              onChange={(event) => setMessage(event.target.value)}
+              rows={10}
+            ></TextField>
+          </Grid>
+          <Grid item container>
+            <Grid item>
+              <Button color="primary" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                disabled={
+                  name.length === 0 ||
+                  email.length === 0 ||
+                  message.length === 0 ||
+                  phone.length === 0 ||
+                  phoneHelper.length !== 0 ||
+                  emailHelper.length !== 0
+                }
+                variant="contained"
+                className={classes.sendButton}
+                onClick={() => setOpen(true)}
+              >
+                Send Message
+                <img
+                  src={airplane}
+                  alt="paper airplane"
+                  style={{ marginLeft: "1em" }}
+                />
+              </Button>
+            </Grid>
+          </Grid>
+        </DialogContent>
+      </Dialog>
       <Grid
         item
         container
