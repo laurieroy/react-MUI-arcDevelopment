@@ -10,6 +10,7 @@ The Material UI library is covered in depth, as we build a sample agency website
 * Responsive design
 * Image Optimization
 
+* Using Firebase as login authentication
 
 # Getting Started with Create React App
 
